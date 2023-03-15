@@ -1,0 +1,5 @@
+config.toml
+*.pyc
+response.json
+*.png
+.idea
