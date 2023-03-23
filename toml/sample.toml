@@ -1,3 +1,4 @@
 api_key = "YOUR_API_KEY" # Get your API key from openweathermap.org
 lat = "YOUR_LATITUDE" # Get your latitude from https://www.latlong.net/
 lon = "YOUR_LONGITUDE" # Get your longitude from https://www.latlong.net/
+city = "YOUR_CITY"
