@@ -25,4 +25,4 @@ timestamps = pg.extract_timestamps(data)
 df = pd.DataFrame({"pm10": component_data, "timestamp": timestamps})
 
 # draw line chart using streamlit
-st.line_chart(df)
+st.line_chart(df, x="timestamp", y="pm10", use_container_width=True)
