@@ -37,4 +37,4 @@ st.write("App by Dhruvajyoti Sarma")
 st.write("Data from openweathermap.org")
 
 # draw line chart using streamlit
-st.line_chart(df, x="timestamp", y="pm10, safe", height=500, width=0)
+st.line_chart(df, x="timestamp", y=["pm10", "safe"], height=500, width=0)
