@@ -4,15 +4,15 @@ from pollution_graph import PollutionGraph
 
 
 @st.cache_data
-def cached_fetch_data(pg: PollutionGraph, start_timestamp: int, end_timestamp: int):
+def cached_fetch_data(pollution_graph: PollutionGraph, start_timestamp: int, end_timestamp: int):
     """
     Uses Streamlit's caching to cache the data and save on API calls
-    :param pg:
+    :param pollution_graph:
     :param start_timestamp:
     :param end_timestamp:
     :return:
     """
-    api_data = pg.fetch_data(start_timestamp, end_timestamp)
+    api_data = pollution_graph.fetch_data(start_timestamp, end_timestamp)
     return api_data
 
 
