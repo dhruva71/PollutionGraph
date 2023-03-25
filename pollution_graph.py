@@ -79,7 +79,7 @@ class PollutionGraph:
         :param component: component to extract data for. Can be one of the following: co, no, no2, o3, so2, pm2_5, pm10, nh3. Default: pm10
         :return: None
         """
-        component_data = self.extract_component_data(data, component)
+        component_data = self.extract_component_data(data, component=component)
 
         timestamps = self.extract_timestamps(data)
         # convert timestamps to datetime, and drop year

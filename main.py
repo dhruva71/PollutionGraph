@@ -12,4 +12,4 @@ if __name__ == "__main__":
 
     # fetch data
     data = pg.fetch_data(START, END)
-    pg.plot_data(data, START, END)
+    pg.plot_data(data, START, END, component="pm10")
