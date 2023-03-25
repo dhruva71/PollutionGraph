@@ -21,13 +21,16 @@ data = pg.fetch_data(START, END)
 component_data = pg.extract_component_data(data, component="pm10")
 timestamps = pg.extract_timestamps(data)
 
+# convert timestamps to datetime
+timestamps = [pd.to_datetime(i, unit="s") for i in timestamps]
+
 # create dataframe
 df = pd.DataFrame({"pm10": component_data, "timestamp": timestamps})
 
 # display title
 st.title("PM10 levels in {}".format(pg.city))
 st.header("From {} to {}".format(pd.to_datetime(START, unit="s"), pd.to_datetime(END, unit="s")))
-st.subheader("App by @dhruva_sarma_")
+st.write("App by @dhruva_sarma_")
 st.write("Data from openweathermap.org")
 
 # draw line chart using streamlit
