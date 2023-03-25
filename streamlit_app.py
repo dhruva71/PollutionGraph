@@ -3,10 +3,11 @@ import pandas as pd
 from pollution_graph import PollutionGraph
 
 
-@st.cache_data
+@st.cache
 def cached_fetch_data(pollution_graph: PollutionGraph, start_timestamp: int, end_timestamp: int):
     """
-    Uses Streamlit's caching to cache the data and save on API calls
+    Uses Streamlit's caching to cache the data and save on API calls.
+    If you use streamlit version >= 1.18, you can use @st.cache_data instead of this decorator.
     :param pollution_graph:
     :param start_timestamp:
     :param end_timestamp:
