@@ -27,6 +27,9 @@ timestamps = [pd.to_datetime(i, unit="s") for i in timestamps]
 # create dataframe
 df = pd.DataFrame({"pm10": component_data, "timestamp": timestamps})
 
+# add a column for safe levels
+df["safe"] = 60
+
 # display title
 st.title("PM10 levels in {}".format(pg.city))
 st.header("From {} to {}".format(pd.to_datetime(START, unit="s"), pd.to_datetime(END, unit="s")))
@@ -34,4 +37,4 @@ st.write("App by Dhruvajyoti Sarma")
 st.write("Data from openweathermap.org")
 
 # draw line chart using streamlit
-st.line_chart(df, x="timestamp", y="pm10", height=500, width=0)
+st.line_chart(df, x="timestamp", y="pm10, safe", height=500, width=0)
