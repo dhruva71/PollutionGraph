@@ -1,4 +1,5 @@
 import datetime
+from typing import Optional
 
 import requests
 import tomli
@@ -8,13 +9,19 @@ from SafeLevels import SAFE_LEVELS
 
 
 class PollutionGraph:
-    def __init__(self):
-        with open("toml/config.toml", "rb") as f:
-            config = tomli.load(f)
+    def __init__(self, config: Optional = None):
+        if config is None:
+            config = self.load_config_file(config)
         self.api_key = config["api_key"]
         self.lat = config["lat"]
         self.lon = config["lon"]
         self.city = config["city"]
+
+    @staticmethod
+    def load_config_file(config):
+        with open("toml/config.toml", "rb") as f:
+            config = tomli.load(f)
+        return config
 
     def fetch_data(self, start, end, save_json=False) -> dict:
         """

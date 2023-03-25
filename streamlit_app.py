@@ -3,7 +3,7 @@ import pandas as pd
 from pollution_graph import PollutionGraph
 
 # Load data
-pg = PollutionGraph()
+pg = PollutionGraph(config=st.secrets)
 
 # Set start and end time
 # get the first day of the current month
