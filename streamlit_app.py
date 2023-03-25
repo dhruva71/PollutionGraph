@@ -22,7 +22,7 @@ component_data = pg.extract_component_data(data, component="pm10")
 timestamps = pg.extract_timestamps(data)
 
 # create dataframe
-df = pd.DataFrame({"timestamps": timestamps, "pm10": component_data})
+df = pd.DataFrame({"pm10": component_data, "timestamp": timestamps})
 
 # draw line chart using streamlit
 st.line_chart(df)
