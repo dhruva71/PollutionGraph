@@ -47,7 +47,8 @@ df["safe"] = 60
 
 # display title
 st.title("PM10 levels in {}".format(pg.city))
-st.header("From {} to {}".format(pd.to_datetime(START, unit="D"), pd.to_datetime(END, unit="D")))
+# get start and end date
+st.header("From {} to {}".format(pd.to_datetime(START, unit="s"), pd.to_datetime(END, unit="s")))
 st.write("App by Dhruvajyoti Sarma")
 st.write("Data from openweathermap.org")
 
