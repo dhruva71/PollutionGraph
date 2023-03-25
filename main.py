@@ -1,6 +1,6 @@
 import datetime
 
-from PollutionGraph import PollutionGraph
+from pollution_graph import PollutionGraph
 
 if __name__ == "__main__":
     # create object

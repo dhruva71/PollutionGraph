@@ -16,7 +16,7 @@ class PollutionGraph:
         self.lon = config["lon"]
         self.city = config["city"]
 
-    def fetch_data(self, start, end, save_json=False):
+    def fetch_data(self, start, end, save_json=False) -> dict:
         """
         Fetch data from openweathermap.org
         :param start: Start time in unix timestamp
@@ -58,6 +58,11 @@ class PollutionGraph:
         component_data = [i["components"][component] for i in data["list"]]
         return component_data
 
+    @staticmethod
+    def extract_timestamps(data) -> list:
+        timestamps = [i["dt"] for i in data["list"]]
+        return timestamps
+
     def plot_data(self, data, start, end, component: str = "pm10"):
         """
         Plots the data for the given component using matplotlib
@@ -69,7 +74,7 @@ class PollutionGraph:
         """
         component_data = self.extract_component_data(data, component)
 
-        timestamps = [i["dt"] for i in data["list"]]
+        timestamps = self.extract_timestamps(data)
         # convert timestamps to datetime, and drop year
         timestamps = [datetime.datetime.fromtimestamp(i) for i in timestamps]
 
