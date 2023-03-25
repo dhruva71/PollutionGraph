@@ -2,6 +2,20 @@ import streamlit as st
 import pandas as pd
 from pollution_graph import PollutionGraph
 
+
+@st.cache_data
+def cached_fetch_data(pg: PollutionGraph, start_timestamp: int, end_timestamp: int):
+    """
+    Uses Streamlit's caching to cache the data and save on API calls
+    :param pg:
+    :param start_timestamp:
+    :param end_timestamp:
+    :return:
+    """
+    api_data = pg.fetch_data(start_timestamp, end_timestamp)
+    return api_data
+
+
 # Load data
 pg = PollutionGraph(config=st.secrets)
 
@@ -15,7 +29,7 @@ END = int(pd.to_datetime("today").timestamp())
 # END = st.date_input("End date", value=pd.to_datetime("today"))
 
 # Fetch data
-data = pg.fetch_data(START, END)
+data = cached_fetch_data(pg, START, END)
 
 # extract data
 component_data = pg.extract_component_data(data, component="pm10")
